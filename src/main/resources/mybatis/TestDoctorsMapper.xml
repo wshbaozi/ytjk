@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.mapper.TestDoctorsMapper" >
+  <resultMap id="BaseResultMap" type="com.github.entity.TestDoctors" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="desc" property="desc" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="SMALLINT" />
+    <result column="pro_level" property="proLevel" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="head_photo" property="headPhoto" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, desc, age, pro_level, sex, created_time, head_photo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from test_doctors
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.github.entity.TestDoctors" >
+    insert into test_doctors (id, name, desc, 
+      age, pro_level, sex, 
+      created_time, head_photo)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, 
+      #{age,jdbcType=SMALLINT}, #{proLevel,jdbcType=INTEGER}, #{sex,jdbcType=TINYINT}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{headPhoto,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.github.entity.TestDoctors" >
+    insert into test_doctors
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="desc != null" >
+        desc,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="proLevel != null" >
+        pro_level,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="headPhoto != null" >
+        head_photo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null" >
+        #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=SMALLINT},
+      </if>
+      <if test="proLevel != null" >
+        #{proLevel,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="headPhoto != null" >
+        #{headPhoto,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.github.entity.TestDoctors" >
+    update test_doctors
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null" >
+        desc = #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=SMALLINT},
+      </if>
+      <if test="proLevel != null" >
+        pro_level = #{proLevel,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="headPhoto != null" >
+        head_photo = #{headPhoto,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.github.entity.TestDoctors" >
+    update test_doctors
+    set name = #{name,jdbcType=VARCHAR},
+      desc = #{desc,jdbcType=VARCHAR},
+      age = #{age,jdbcType=SMALLINT},
+      pro_level = #{proLevel,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=TINYINT},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      head_photo = #{headPhoto,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="searchDoctor" resultMap="BaseResultMap">
+          select
+      <include refid="Base_Column_List" />
+      from test_doctors
+      where name like concat('%',#{keyword},'%')
+  </select>
+</mapper>

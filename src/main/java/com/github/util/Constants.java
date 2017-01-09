@@ -12,4 +12,6 @@ public class Constants {
     public static final String AESKEY = "BNarvH69mVK93xhUhmbaUOSzLx5hhZlZbu2bdgkMz5v";
     public static final String PARTENERID = "";
     public static final String PARTENERKET = "";
+
+    public static final String FILE_PATH = "139.224.197.220/ytjk/statics/";
 }
