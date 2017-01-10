@@ -1,5 +1,6 @@
 package com.ytjk.config;
 
+import com.ytjk.util.Constants;
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.bean.menu.WxMenu;
 import me.chanjar.weixin.common.bean.menu.WxMenuButton;
@@ -29,55 +30,26 @@ public class MenuConfig {
 
         WxMenu menu = new WxMenu();
         WxMenuButton button1 = new WxMenuButton();
-        button1.setType(WxConsts.BUTTON_VIEW);
-        button1.setName("联系我们");
-        button1.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
+        button1.setType(WxConsts.BUTTON_CLICK);
+        button1.setName("专家团队");
+        button1.setKey("team");
+        button1.setUrl(wxMpService.oauth2buildAuthorizationUrl(Constants.SERVER_URL+"/doctor/listDoctors?", "snsapi_base", ""));
 
         WxMenuButton button2 = new WxMenuButton();
-        button2.setName("健康咨询");
+        button2.setType(WxConsts.BUTTON_CLICK);
+        button2.setName("健康科普");
+        button2.setKey("health");
+        button2.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
 
-        WxMenuButton button21 = new WxMenuButton();
-        button21.setType(WxConsts.BUTTON_VIEW);
-        button21.setName("专家团队");
-        button21.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
-
-        WxMenuButton button22 = new WxMenuButton();
-        button22.setType(WxConsts.BUTTON_VIEW);
-        button22.setName("护理部");
-        button22.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
-
-        WxMenuButton button23 = new WxMenuButton();
-        button23.setType(WxConsts.BUTTON_VIEW);
-        button23.setName("护工队");
-        button23.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
+//        WxMenuButton button21 = new WxMenuButton();
+//        button21.setType(WxConsts.BUTTON_VIEW);
+//        button21.setName("专家团队");
+//        button21.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
 
 
-//        WxMenuButton button24 = new WxMenuButton();
-//        button24.setType(WxConsts.BUTTON_VIEW);
-//        button24.setName("科普");
-//        button24.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
-//
-//        WxMenuButton button25 = new WxMenuButton();
-//        button25.setType(WxConsts.BUTTON_VIEW);
-//        button25.setName("病例");
-//        button25.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
-//
-//
-//        WxMenuButton button26 = new WxMenuButton();
-//        button26.setType(WxConsts.BUTTON_VIEW);
-//        button26.setName("居家健康生活");
-//        button26.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
-
-//        WxMenuButton button27 = new WxMenuButton();
-//        button27.setType(WxConsts.BUTTON_VIEW);
-//        button27.setName("官方活动");
-//        button27.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
-
-        List<WxMenuButton> list = new ArrayList<>();
-        list.add(button21);
-        list.add(button22);
-        list.add(button23);
-        button2.setSubButtons(list);
+//        List<WxMenuButton> list = new ArrayList<>();
+//        list.add(button21);
+//        button2.setSubButtons(list);
 
         WxMenuButton button3 = new WxMenuButton();
         button3.setType(WxConsts.BUTTON_CLICK);
@@ -99,11 +71,11 @@ public class MenuConfig {
     public static void main(String[] args) {
         MainConfig mainConfig = new MainConfig();
         WxMpService wxMpService = mainConfig.wxMpService();
-//        try {
-//            wxMpService.getMenuService().menuCreate(getMenu());
-//        } catch (WxErrorException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            wxMpService.getMenuService().menuCreate(getMenu());
+        } catch (WxErrorException e) {
+            e.printStackTrace();
+        }
 
 //        File file = new File("C:\\Users\\Administrator\\Desktop\\classes\\e45fc07.jpg");
 //        if(!file.exists()){

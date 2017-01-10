@@ -13,7 +13,7 @@
 //
 //	public void generator() throws Exception{
 //
-//		List<String> warnings = new ArrayList<String>();
+//		List<String> warnings = new ArrayList<>();
 //		boolean overwrite = true;
 //
 //		File configFile = new File("src/main/resources/generatorConfig.xml");

@@ -15,5 +15,13 @@ public class Constants {
 
     public static final String FILE_PATH = "http://139.224.197.220/ytjk/statics/img/";
 
+    /**
+     * 获取微信图片地址
+     */
     public static final String WX_FILE_PATH = "http://file.api.weixin.qq.com/cgi-bin/media/get";
+
+    /**
+     *
+     */
+    public static final String SERVER_URL = "http://139.224.197.220/ytjk";
 }

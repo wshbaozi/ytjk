@@ -1,13 +1,12 @@
 package com.ytjk.service.impl;
 
-import com.ytjk.entity.TestDoctors;
+import com.ytjk.entity.Doctor;
 import com.ytjk.handler.LogHandler;
 import com.ytjk.handler.MsgHandler;
 import com.ytjk.handler.SubscribeHandler;
-import com.ytjk.mapper.TestDoctorsMapper;
+import com.ytjk.mapper.DoctorMapper;
 import com.ytjk.service.CoreService;
 import com.ytjk.util.Constants;
-import com.ytjk.util.FileUtil;
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpMessageRouter;
@@ -33,7 +32,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -54,7 +52,7 @@ public class CoreServiceImpl implements CoreService {
     @Autowired
     protected MsgHandler msgHandler;
     @Autowired
-    protected TestDoctorsMapper doctorsMapper;
+    protected DoctorMapper doctorsMapper;
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
     private WxMpMessageRouter router;
@@ -122,18 +120,18 @@ public class CoreServiceImpl implements CoreService {
     public WxMpXmlOutMessage route(WxMpXmlMessage inMessage) {
         try {
             if(inMessage.getContent()!=null){
-                TestDoctors doctor = doctorsMapper.searchDoctor(inMessage.getContent());
+                Doctor doctor = doctorsMapper.searchDoctor(inMessage.getContent());
                 if(doctor!=null){
 //                    File file = wxMpService.getMaterialService().mediaDownload(
 
                     WxMpXmlOutNewsMessage.Item item = new WxMpXmlOutNewsMessage.Item();
-                    item.setDescription(doctor.getDesc());
+                    item.setDescription(doctor.getDescr());
 //                    item.setPicUrl(Constants.WX_FILE_PATH+"?access_token="+wxMpService.getAccessToken()
 //                            +"&media_id="+doctor.getHeadPhoto());
 //                    item.setPicUrl("http://inews.gtimg.com/newsapp_ls/0/1015025046_150120/0");
                     item.setPicUrl(Constants.FILE_PATH+doctor.getHeadPhoto());
                     item.setTitle(doctor.getName());
-                    item.setUrl("www.baidu.com");
+                    item.setUrl(Constants.SERVER_URL+"/doctor/viewDoctor?id="+doctor.getId());
                     return WxMpXmlOutMessage.NEWS().addArticle(item).fromUser(inMessage.getToUser()).toUser(inMessage.getFromUser()).build();
                 }else{
                     return WxMpXmlOutMessage.TEXT().content("暂无与 "+inMessage.getContent()+" 匹配的专家").fromUser(inMessage.getToUser()).toUser(inMessage.getFromUser()).build();
