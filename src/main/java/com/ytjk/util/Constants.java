@@ -13,7 +13,7 @@ public class Constants {
     public static final String PARTENERID = "";
     public static final String PARTENERKET = "";
 
-    public static final String FILE_PATH = "http://139.224.197.220/ytjk/statics/";
+    public static final String FILE_PATH = "http://139.224.197.220/ytjk/statics/img/";
 
     public static final String WX_FILE_PATH = "http://file.api.weixin.qq.com/cgi-bin/media/get";
 }
