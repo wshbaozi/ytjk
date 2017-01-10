@@ -1,7 +1,6 @@
-package com.github.config;
+package com.ytjk.config;
 
-import com.github.util.Constants;
-import org.springframework.beans.factory.annotation.Value;
+import com.ytjk.util.Constants;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -56,5 +55,4 @@ public class MainConfig {
         wxMpService.setWxMpConfigStorage(wxMpConfigStorage());
         return wxMpService;
     }
-
 }

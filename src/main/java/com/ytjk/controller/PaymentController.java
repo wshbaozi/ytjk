@@ -1,4 +1,4 @@
-package com.github.controller;
+package com.ytjk.controller;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -16,6 +16,10 @@ import javax.net.ssl.SSLContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ytjk.service.CoreService;
+import com.ytjk.util.MD5Util;
+import com.ytjk.util.ReturnModel;
+import com.ytjk.util.XMLUtil;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -29,11 +33,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.github.service.CoreService;
-import com.github.util.MD5Util;
-import com.github.util.ReturnModel;
-import com.github.util.Sha1Util;
-import com.github.util.XMLUtil;
+import com.ytjk.util.Sha1Util;
 import com.google.gson.Gson;
 
 import me.chanjar.weixin.common.exception.WxErrorException;

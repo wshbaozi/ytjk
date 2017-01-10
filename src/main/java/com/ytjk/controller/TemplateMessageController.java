@@ -1,4 +1,4 @@
-package com.github.controller;
+package com.ytjk.controller;
 
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;

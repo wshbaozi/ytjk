@@ -10,7 +10,7 @@
 
 
     <!-- 扫描controller（controller层注入） -->
-    <context:component-scan base-package="com.github.controller"/>
+    <context:component-scan base-package="com.ytjk.controller"/>
 
     <!-- 会自动注册DefaultAnnotationHandlerMapping与AnnotationMethodHandlerAdapter 两个bean,是spring MVC为@Controllers分发请求所必须的 -->
     <mvc:annotation-driven/>
@@ -82,45 +82,45 @@
     <mvc:resources location="/WEB-INF/statics/" mapping="/statics/**"/>
 
 
-    <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">-->
-        <!--&lt;!&ndash; 基本属性 url、user、password &ndash;&gt;-->
-        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver"/>-->
-        <!--<property name="url" value="jdbc\:mysql\://139.224.197.220\:3306/ytjk?useUnicode\=true&amp;characterEncoding\=utf8&amp;characterSetResults\=utf8"/>-->
-        <!--<property name="username" value="root"/>-->
-        <!--<property name="password" value="baozhenliang1989"/>-->
-    <!--</bean>-->
-    <!--&lt;!&ndash; 配置druid监控spring jdbc &ndash;&gt;-->
-    <!--<bean id="druid-stat-interceptor" class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor"/>-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <!-- 基本属性 url、user、password -->
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc\:mysql\://139.224.197.220\:3306/ytjk?useUnicode\=true&amp;characterEncoding\=utf8&amp;characterSetResults\=utf8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="baozhenliang1989"/>
+    </bean>
+    <!-- 配置druid监控spring jdbc -->
+    <bean id="druid-stat-interceptor" class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor"/>
 
-    <!--<bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">-->
-        <!--<property name="patterns">-->
-            <!--<list>-->
-                <!--<value>com.github.service.*</value>-->
-            <!--</list>-->
-        <!--</property>-->
-    <!--</bean>-->
-    <!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
-        <!--&lt;!&ndash;注入数据库连接池&ndash;&gt;-->
-        <!--<property name="dataSource" ref="dataSource"/>-->
-        <!--&lt;!&ndash;全局配置文件&ndash;&gt;-->
-        <!--<property name="configLocation" value="classpath:/mybatis-config.xml"/>-->
-        <!--&lt;!&ndash; mybatis开启缓存支持 &ndash;&gt;-->
-        <!--<property name="configurationProperties">-->
-            <!--<props>-->
-                <!--&lt;!&ndash;<prop key="cacheEnabled">true</prop>&ndash;&gt;-->
-                <!--<prop key="lazyLoadingEnabled">false</prop>-->
-                <!--<prop key="aggressiveLazyLoading">true</prop>-->
-            <!--</props>-->
-        <!--</property>-->
-        <!--&lt;!&ndash;扫描实体类包&ndash;&gt;-->
-        <!--<property name="typeAliasesPackage" value="com.github.entity*"/>-->
-        <!--&lt;!&ndash;扫描映射包&ndash;&gt;-->
-        <!--<property name="mapperLocations" value="classpath:mybatis/*.xml"/>-->
+    <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
+        <property name="patterns">
+            <list>
+                <value>com.github.service.*</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--注入数据库连接池-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--全局配置文件-->
+        <property name="configLocation" value="classpath:/mybatis-config.xml"/>
+        <!-- mybatis开启缓存支持 -->
+        <property name="configurationProperties">
+            <props>
+                <!--<prop key="cacheEnabled">true</prop>-->
+                <prop key="lazyLoadingEnabled">false</prop>
+                <prop key="aggressiveLazyLoading">true</prop>
+            </props>
+        </property>
+        <!--扫描实体类包-->
+        <property name="typeAliasesPackage" value="com.ytjk.entity.*"/>
+        <!--扫描映射包-->
+        <property name="mapperLocations" value="classpath:mybatis/*.xml"/>
 
-    <!--</bean>-->
+    </bean>
 
-    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
-        <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
-        <!--<property name="basePackage" value="com.github.mapper"/>-->
-    <!--</bean>-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="com.ytjk.mapper"/>
+    </bean>
 </beans>

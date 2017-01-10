@@ -1,4 +1,4 @@
-package com.github.util;
+package com.ytjk.util;
 
 public class GenericReturnModel<T> {
 

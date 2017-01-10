@@ -1,18 +1,18 @@
-package com.github.controller;
+package com.ytjk.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.github.config.MainConfig;
-import com.github.config.MenuConfig;
+import com.ytjk.config.MainConfig;
+import com.ytjk.config.MenuConfig;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.github.service.CoreService;
-import com.github.util.ReturnModel;
+import com.ytjk.service.CoreService;
+import com.ytjk.util.ReturnModel;
 
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;
@@ -52,7 +52,6 @@ public class CoreController extends GenericController {
     public void wechatCore(HttpServletRequest request, HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
-
         String signature = request.getParameter("signature");
         String nonce = request.getParameter("nonce");
         String timestamp = request.getParameter("timestamp");

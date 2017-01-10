@@ -1,4 +1,4 @@
-package com.github.entity;
+package com.ytjk.entity;
 
 import java.util.Date;
 
@@ -7,7 +7,7 @@ public class TestDoctors {
 
     private String name;
 
-    private String desc;
+    private String descr;
 
     private Short age;
 
@@ -36,11 +36,11 @@ public class TestDoctors {
     }
 
     public String getDesc() {
-        return desc;
+        return descr;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setDesc(String descr) {
+        this.descr = descr == null ? null : descr.trim();
     }
 
     public Short getAge() {

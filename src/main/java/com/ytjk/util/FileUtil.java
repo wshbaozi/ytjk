@@ -1,4 +1,4 @@
-package com.github.util;
+package com.ytjk.util;
 
 /**
  * Created by bzl on 2017-01-09 下午 7:41

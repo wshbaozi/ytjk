@@ -1,12 +1,13 @@
-package com.github.service.impl;
+package com.ytjk.service.impl;
 
-import com.github.entity.TestDoctors;
-import com.github.handler.LogHandler;
-import com.github.handler.MsgHandler;
-import com.github.handler.SubscribeHandler;
-import com.github.mapper.TestDoctorsMapper;
-import com.github.service.CoreService;
-import com.github.util.FileUtil;
+import com.ytjk.entity.TestDoctors;
+import com.ytjk.handler.LogHandler;
+import com.ytjk.handler.MsgHandler;
+import com.ytjk.handler.SubscribeHandler;
+import com.ytjk.mapper.TestDoctorsMapper;
+import com.ytjk.service.CoreService;
+import com.ytjk.util.Constants;
+import com.ytjk.util.FileUtil;
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpMessageRouter;
@@ -32,7 +33,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -52,7 +53,7 @@ public class CoreServiceImpl implements CoreService {
     protected SubscribeHandler subscribeHandler;
     @Autowired
     protected MsgHandler msgHandler;
-    @Resource(name="doctorsMapper")
+    @Autowired
     protected TestDoctorsMapper doctorsMapper;
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
@@ -121,17 +122,22 @@ public class CoreServiceImpl implements CoreService {
     public WxMpXmlOutMessage route(WxMpXmlMessage inMessage) {
         try {
             if(inMessage.getContent()!=null){
-//                TestDoctors doctor = doctorsMapper.searchDoctor(inMessage.getContent());
-//                if(doctor!=null){
-//                    WxMpXmlOutNewsMessage.Item item = new WxMpXmlOutNewsMessage.Item();
-//                    item.setDescription(doctor.getDesc());
-//                    item.setPicUrl(FileUtil.getPicUrl(doctor.getHeadPhoto()));
-//                    item.setTitle(doctor.getName());
-//                    item.setUrl("www.baidu.com");
-//                    return WxMpXmlOutMessage.NEWS().addArticle(item).fromUser(inMessage.getToUser()).toUser(inMessage.getFromUser()).build();
-//                }else{
+                TestDoctors doctor = doctorsMapper.searchDoctor(inMessage.getContent());
+                if(doctor!=null){
+//                    File file = wxMpService.getMaterialService().mediaDownload(
+
+                    WxMpXmlOutNewsMessage.Item item = new WxMpXmlOutNewsMessage.Item();
+                    item.setDescription(doctor.getDesc());
+//                    item.setPicUrl(Constants.WX_FILE_PATH+"?access_token="+wxMpService.getAccessToken()
+//                            +"&media_id="+doctor.getHeadPhoto());
+//                    item.setPicUrl("http://inews.gtimg.com/newsapp_ls/0/1015025046_150120/0");
+                    item.setPicUrl(Constants.FILE_PATH+doctor.getHeadPhoto());
+                    item.setTitle(doctor.getName());
+                    item.setUrl("www.baidu.com");
+                    return WxMpXmlOutMessage.NEWS().addArticle(item).fromUser(inMessage.getToUser()).toUser(inMessage.getFromUser()).build();
+                }else{
                     return WxMpXmlOutMessage.TEXT().content("暂无与 "+inMessage.getContent()+" 匹配的专家").fromUser(inMessage.getToUser()).toUser(inMessage.getFromUser()).build();
-//                }
+                }
             }
         } catch (Exception e) {
             this.logger.error(e.getMessage(), e);

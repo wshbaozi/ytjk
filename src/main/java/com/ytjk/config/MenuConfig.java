@@ -1,11 +1,13 @@
-package com.github.config;
+package com.ytjk.config;
 
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.bean.menu.WxMenu;
 import me.chanjar.weixin.common.bean.menu.WxMenuButton;
+import me.chanjar.weixin.common.bean.result.WxMediaUploadResult;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpService;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,11 +99,32 @@ public class MenuConfig {
     public static void main(String[] args) {
         MainConfig mainConfig = new MainConfig();
         WxMpService wxMpService = mainConfig.wxMpService();
-        try {
-            wxMpService.getMenuService().menuCreate(getMenu());
-        } catch (WxErrorException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            wxMpService.getMenuService().menuCreate(getMenu());
+//        } catch (WxErrorException e) {
+//            e.printStackTrace();
+//        }
+
+//        File file = new File("C:\\Users\\Administrator\\Desktop\\classes\\e45fc07.jpg");
+//        if(!file.exists()){
+//            try {
+//                file.createNewFile();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        try {
+//            WxMediaUploadResult res = wxMpService.getMaterialService().mediaUpload(WxConsts.MEDIA_IMAGE, WxConsts.FILE_JPG, new FileInputStream(file));
+//            System.out.println(res.getMediaId());
+//        } catch (WxErrorException e) {
+//            e.printStackTrace();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+
+
     }
+
+
 
 }

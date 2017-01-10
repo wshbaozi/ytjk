@@ -14,18 +14,18 @@
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     <!-- 分页拦截器 -->
-    <plugins>
-        <!-- com.github.pagehelper为PageHelper类所在包名 -->
-        <plugin interceptor="com.github.pagehelper.PageHelper">
-            <property name="dialect" value="mysql"/>
-            <!-- 该参数默认为false -->
-            <!-- 设置为true时，会将RowBounds第一个参数offset当成pageNum页码使用 -->
-            <!-- 和startPage中的pageNum效果一样-->
-            <property name="offsetAsPageNum" value="true"/>
-            <!-- 该参数默认为false -->
-            <!-- 设置为true时，使用RowBounds分页会进行count查询 -->
-            <property name="rowBoundsWithCount" value="true"/>
-        </plugin>
-    </plugins>
+    <!--<plugins>-->
+        <!--&lt;!&ndash; com.github.pagehelper为PageHelper类所在包名 &ndash;&gt;-->
+        <!--<plugin interceptor="com.github.pagehelper.PageHelper">-->
+            <!--<property name="dialect" value="mysql"/>-->
+            <!--&lt;!&ndash; 该参数默认为false &ndash;&gt;-->
+            <!--&lt;!&ndash; 设置为true时，会将RowBounds第一个参数offset当成pageNum页码使用 &ndash;&gt;-->
+            <!--&lt;!&ndash; 和startPage中的pageNum效果一样&ndash;&gt;-->
+            <!--<property name="offsetAsPageNum" value="true"/>-->
+            <!--&lt;!&ndash; 该参数默认为false &ndash;&gt;-->
+            <!--&lt;!&ndash; 设置为true时，使用RowBounds分页会进行count查询 &ndash;&gt;-->
+            <!--<property name="rowBoundsWithCount" value="true"/>-->
+        <!--</plugin>-->
+    <!--</plugins>-->
 
 </configuration>

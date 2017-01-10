@@ -1,10 +1,9 @@
-package com.github.mapper;
+package com.ytjk.mapper;
 
-import com.github.entity.TestDoctors;
-import org.springframework.stereotype.Component;
+import com.ytjk.entity.TestDoctors;
 import org.springframework.stereotype.Repository;
 
-@Repository("doctorsMapper")
+@Repository
 public interface TestDoctorsMapper {
     int insert(TestDoctors record);
 
