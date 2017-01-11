@@ -20,6 +20,6 @@ public class DoctorService {
     }
 
     public Doctor viewDoctor(Integer id)throws Exception{
-        return doctorsMapper.selectByPrimaryKey(id);
+        return doctorsMapper.getDoctorInfoById(id);
     }
 }

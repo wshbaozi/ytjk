@@ -131,7 +131,7 @@ public class CoreServiceImpl implements CoreService {
 //                    item.setPicUrl("http://inews.gtimg.com/newsapp_ls/0/1015025046_150120/0");
                     item.setPicUrl(Constants.FILE_PATH+doctor.getHeadPhoto());
                     item.setTitle(doctor.getName());
-                    item.setUrl(Constants.SERVER_URL+"/doctor/viewDoctor?id="+doctor.getId());
+                    item.setUrl(Constants.SERVER_URL+"/statics/index.html#!/doctor?id="+doctor.getId());
                     return WxMpXmlOutMessage.NEWS().addArticle(item).fromUser(inMessage.getToUser()).toUser(inMessage.getFromUser()).build();
                 }else{
                     return WxMpXmlOutMessage.TEXT().content("暂无与 "+inMessage.getContent()+" 匹配的专家").fromUser(inMessage.getToUser()).toUser(inMessage.getFromUser()).build();

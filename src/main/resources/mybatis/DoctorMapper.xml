@@ -162,4 +162,9 @@
     </if>
     order by seq_num
   </select>
+  <select id="getDoctorInfoById" resultType="com.ytjk.entity.Doctor" >
+    select id,name,descr,age,pro_level proLevel,sex,created_time createdTime,head_photo headPhoto,dept_id deptId,(select name from doc_dept where id = t.dept_id)as deptName,seq_num seqNum
+    from doctor t
+    where id = #{id,jdbcType=INTEGER}
+  </select>
 </mapper>

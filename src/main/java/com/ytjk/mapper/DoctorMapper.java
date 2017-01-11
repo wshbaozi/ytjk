@@ -30,4 +30,11 @@ public interface DoctorMapper {
      * @return
      */
     List<Doctor> listDoctors(Integer deptId);
+
+    /**
+     * 根据id获取医生详情
+     * @param id
+     * @return
+     */
+    Doctor getDoctorInfoById(Integer id);
 }

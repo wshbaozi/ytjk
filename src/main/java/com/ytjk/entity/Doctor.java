@@ -23,6 +23,8 @@ public class Doctor {
 
     private Integer seqNum;
 
+    private String deptName;
+
     public Integer getId() {
         return id;
     }
@@ -101,5 +103,13 @@ public class Doctor {
 
     public void setSeqNum(Integer seqNum) {
         this.seqNum = seqNum;
+    }
+
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
     }
 }

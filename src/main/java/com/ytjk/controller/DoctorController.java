@@ -1,11 +1,13 @@
 package com.ytjk.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.ytjk.entity.Doctor;
 import com.ytjk.service.CoreService;
 import com.ytjk.service.DoctorService;
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +20,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2017/1/10.
  */
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/doctor")
 public class DoctorController {
@@ -42,13 +45,9 @@ public class DoctorController {
     }
 
     @RequestMapping(value = "/viewDoctor")
-    @ResponseBody
-    public ModelAndView viewDoctor(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        ModelAndView mv = new ModelAndView();
+    public Object viewDoctor(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Integer id = Integer.parseInt(request.getParameter("id"));
-        mv.setViewName("doctor_info");
         Doctor doctor = doctorService.viewDoctor(id);
-        mv.addObject(doctor);
-        return mv;
+        return JSON.toJSONString(doctor);
     }
 }

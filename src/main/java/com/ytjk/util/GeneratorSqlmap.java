@@ -1,4 +1,4 @@
-//package com.github.util;
+//package com.ytjk.util;
 //
 //import org.mybatis.generator.api.MyBatisGenerator;
 //import org.mybatis.generator.config.Configuration;
