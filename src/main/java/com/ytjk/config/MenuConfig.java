@@ -30,16 +30,17 @@ public class MenuConfig {
 
         WxMenu menu = new WxMenu();
         WxMenuButton button1 = new WxMenuButton();
-        button1.setType(WxConsts.BUTTON_CLICK);
+        button1.setType(WxConsts.BUTTON_VIEW);
         button1.setName("专家团队");
-        button1.setKey("team");
-        button1.setUrl(wxMpService.oauth2buildAuthorizationUrl(Constants.SERVER_URL+"/doctor/listDoctors?", "snsapi_base", ""));
+//        button1.setKey("team");
+        button1.setUrl(Constants.SERVER_URL+"/doctor/listDoctors");
+//        button1.setUrl("http://www.baidu.com");
 
         WxMenuButton button2 = new WxMenuButton();
         button2.setType(WxConsts.BUTTON_CLICK);
         button2.setName("健康科普");
         button2.setKey("health");
-        button2.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
+ //       button2.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
 
 //        WxMenuButton button21 = new WxMenuButton();
 //        button21.setType(WxConsts.BUTTON_VIEW);
