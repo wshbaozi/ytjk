@@ -2,7 +2,7 @@ package com.ytjk.entity;
 
 import java.util.Date;
 
-public class TestDoctors {
+public class Doctor {
     private Integer id;
 
     private String name;
@@ -18,6 +18,10 @@ public class TestDoctors {
     private Date createdTime;
 
     private String headPhoto;
+
+    private Integer deptId;
+
+    private Integer seqNum;
 
     public Integer getId() {
         return id;
@@ -35,11 +39,11 @@ public class TestDoctors {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getDesc() {
+    public String getDescr() {
         return descr;
     }
 
-    public void setDesc(String descr) {
+    public void setDescr(String descr) {
         this.descr = descr == null ? null : descr.trim();
     }
 
@@ -81,5 +85,21 @@ public class TestDoctors {
 
     public void setHeadPhoto(String headPhoto) {
         this.headPhoto = headPhoto == null ? null : headPhoto.trim();
+    }
+
+    public Integer getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
+    }
+
+    public Integer getSeqNum() {
+        return seqNum;
+    }
+
+    public void setSeqNum(Integer seqNum) {
+        this.seqNum = seqNum;
     }
 }
