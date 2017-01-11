@@ -148,8 +148,9 @@
   <select id="searchDoctor" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from test_doctors
+    from doctor
     where name like concat('%',#{keyword},'%')
+    limit 0,1
   </select>
   <select id="listDoctors" resultType="com.ytjk.entity.Doctor">
     select
