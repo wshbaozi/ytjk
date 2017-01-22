@@ -14,7 +14,7 @@
     <result column="seq_num" property="seqNum" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, descr, age, pro_level, sex, created_time, head_photo, dept_id, seq_num
+    id, name, descr, age, pro_level, sex, created_time, head_photo headphoto, dept_id, seq_num
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
