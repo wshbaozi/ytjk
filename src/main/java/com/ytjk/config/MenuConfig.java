@@ -33,7 +33,7 @@ public class MenuConfig {
         button1.setType(WxConsts.BUTTON_VIEW);
         button1.setName("专家团队");
 //        button1.setKey("team");
-        button1.setUrl(Constants.SERVER_URL+"/doctor/listDoctors");
+        button1.setUrl(Constants.SERVER_URL+"/statics/index.html#!/departments");
 //        button1.setUrl("http://www.baidu.com");
 
         WxMenuButton button2 = new WxMenuButton();

@@ -158,7 +158,7 @@
     from doctor
     where 1=1
     <if test="deptId != null" >
-      and dept_id = #{deptId,jdbcType=INTEGER},
+      and dept_id = #{deptId}
     </if>
     order by seq_num
   </select>

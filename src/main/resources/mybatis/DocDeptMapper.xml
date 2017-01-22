@@ -8,9 +8,10 @@
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
     <result column="del_status" property="delStatus" jdbcType="TINYINT" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, seq_num, created_time, del_status, remark
+    id, name, seq_num, created_time, del_status, remark,pic_url
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,10 +21,10 @@
   </select>
   <insert id="insert" parameterType="com.ytjk.entity.DocDept" >
     insert into doc_dept (id, name, seq_num, 
-      created_time, del_status, remark
+      created_time, del_status, remark, pic_url
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{seqNum,jdbcType=INTEGER}, 
-      #{createdTime,jdbcType=TIMESTAMP}, #{delStatus,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}
+      #{createdTime,jdbcType=TIMESTAMP}, #{delStatus,jdbcType=TINYINT}, #{remark,jdbcType=VARCHAR}, #{picUrl,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.ytjk.entity.DocDept" >
@@ -47,6 +48,9 @@
       <if test="remark != null" >
         remark,
       </if>
+      <if test="picUrl != null" >
+        pic_url,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -66,6 +70,9 @@
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{pic_url,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -87,6 +94,9 @@
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
+      <if test="picUrl != null" >
+        remark = #{picUrl,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -96,7 +106,15 @@
       seq_num = #{seqNum,jdbcType=INTEGER},
       created_time = #{createdTime,jdbcType=TIMESTAMP},
       del_status = #{delStatus,jdbcType=TINYINT},
-      remark = #{remark,jdbcType=VARCHAR}
+      remark = #{remark,jdbcType=VARCHAR},
+       pic_url = #{picUrl,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="listDept" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from doc_dept
+    where del_status = 0
+    order by seq_num
+  </select>
 </mapper>

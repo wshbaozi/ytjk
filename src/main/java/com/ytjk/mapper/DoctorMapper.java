@@ -1,6 +1,7 @@
 package com.ytjk.mapper;
 
 import com.ytjk.entity.Doctor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public interface DoctorMapper {
      * @param deptId
      * @return
      */
-    List<Doctor> listDoctors(Integer deptId);
+    List<Doctor> listDoctors(@Param("deptId")Integer deptId);
 
     /**
      * 根据id获取医生详情

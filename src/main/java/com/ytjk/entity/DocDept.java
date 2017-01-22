@@ -15,6 +15,8 @@ public class DocDept {
 
     private String remark;
 
+    private String picUrl;
+
     public Integer getId() {
         return id;
     }
@@ -61,5 +63,13 @@ public class DocDept {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+
+    public String getPicUrl() {
+        return picUrl;
+    }
+
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
     }
 }

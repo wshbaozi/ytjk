@@ -1,6 +1,7 @@
 package com.ytjk.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.ytjk.entity.DocDept;
 import com.ytjk.entity.Doctor;
 import com.ytjk.service.CoreService;
 import com.ytjk.service.DoctorService;
@@ -35,13 +36,9 @@ public class DoctorController {
 
 
     @RequestMapping(value = "/listDoctors")
-    @ResponseBody
-    public ModelAndView listDoctors(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("doctor_list");
-        List<Doctor> docList = doctorService.listDoctors(null);
-        mv.addObject(docList);
-        return mv;
+    public Object listDoctors(Integer deptId) throws Exception {
+        List<Doctor> docList = doctorService.listDoctors(deptId);
+        return JSON.toJSONString(docList);
     }
 
     @RequestMapping(value = "/viewDoctor")
@@ -49,5 +46,11 @@ public class DoctorController {
         Integer id = Integer.parseInt(request.getParameter("id"));
         Doctor doctor = doctorService.viewDoctor(id);
         return JSON.toJSONString(doctor);
+    }
+
+    @RequestMapping(value = "/listDept")
+    public Object listDept(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        List<DocDept> list= doctorService.listDepts();
+        return JSON.toJSONString(list);
     }
 }
