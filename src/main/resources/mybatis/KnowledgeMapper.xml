@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ytjk.mapper.KnowledgeMapper" >
+  <resultMap id="BaseResultMap" type="com.ytjk.entity.Knowledge" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="class_id" property="classId" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="add_date" property="addDate" jdbcType="TIMESTAMP" />
+    <result column="seq_num" property="seqNum" jdbcType="INTEGER" />
+    <result column="head_photo" property="headPhoto" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, class_id, content, add_date, seq_num, head_photo headphoto, title
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from knowledge
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.ytjk.entity.Knowledge" >
+    insert into knowledge (id, class_id, content, 
+      add_date, seq_num, head_photo, 
+      title)
+    values (#{id,jdbcType=INTEGER}, #{classId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+      #{addDate,jdbcType=TIMESTAMP}, #{seqNum,jdbcType=INTEGER}, #{headPhoto,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ytjk.entity.Knowledge" >
+    insert into knowledge
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="classId != null" >
+        class_id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="addDate != null" >
+        add_date,
+      </if>
+      <if test="seqNum != null" >
+        seq_num,
+      </if>
+      <if test="headPhoto != null" >
+        head_photo,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="addDate != null" >
+        #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seqNum != null" >
+        #{seqNum,jdbcType=INTEGER},
+      </if>
+      <if test="headPhoto != null" >
+        #{headPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ytjk.entity.Knowledge" >
+    update knowledge
+    <set >
+      <if test="classId != null" >
+        class_id = #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="addDate != null" >
+        add_date = #{addDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seqNum != null" >
+        seq_num = #{seqNum,jdbcType=INTEGER},
+      </if>
+      <if test="headPhoto != null" >
+        head_photo = #{headPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ytjk.entity.Knowledge" >
+    update knowledge
+    set class_id = #{classId,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      add_date = #{addDate,jdbcType=TIMESTAMP},
+      seq_num = #{seqNum,jdbcType=INTEGER},
+      head_photo = #{headPhoto,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="listKnowledge" resultType="com.ytjk.entity.Knowledge">
+    select
+    <include refid="Base_Column_List" />
+    from knowledge
+    where 1=1
+    order by seq_Num
+  </select>
+</mapper>

@@ -1,5 +1,6 @@
 package com.ytjk.config;
 
+import com.alibaba.fastjson.JSON;
 import com.ytjk.util.Constants;
 import me.chanjar.weixin.common.api.WxConsts;
 import me.chanjar.weixin.common.bean.menu.WxMenu;
@@ -7,6 +8,7 @@ import me.chanjar.weixin.common.bean.menu.WxMenuButton;
 import me.chanjar.weixin.common.bean.result.WxMediaUploadResult;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpService;
+import me.chanjar.weixin.mp.bean.menu.WxMpGetSelfMenuInfoResult;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -37,10 +39,9 @@ public class MenuConfig {
 //        button1.setUrl("http://www.baidu.com");
 
         WxMenuButton button2 = new WxMenuButton();
-        button2.setType(WxConsts.BUTTON_CLICK);
+        button2.setType(WxConsts.BUTTON_VIEW);
         button2.setName("健康科普");
-        button2.setKey("health");
- //       button2.setUrl(wxMpService.oauth2buildAuthorizationUrl("", "snsapi_base", ""));
+        button2.setUrl(Constants.SERVER_URL+"/statics/index.html#!/listKnowledges");
 
 //        WxMenuButton button21 = new WxMenuButton();
 //        button21.setType(WxConsts.BUTTON_VIEW);
@@ -73,10 +74,13 @@ public class MenuConfig {
         MainConfig mainConfig = new MainConfig();
         WxMpService wxMpService = mainConfig.wxMpService();
         try {
-            wxMpService.getMenuService().menuCreate(getMenu());
+          //  wxMpService.getMenuService().menuCreate(getMenu());
+           WxMenu result =  wxMpService.getMenuService().menuGet();
+            System.out.println(JSON.toJSONString(result));
         } catch (WxErrorException e) {
             e.printStackTrace();
         }
+
 
 //        File file = new File("C:\\Users\\Administrator\\Desktop\\classes\\e45fc07.jpg");
 //        if(!file.exists()){
